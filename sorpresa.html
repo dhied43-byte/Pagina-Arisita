@@ -2,53 +2,119 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Sorpresa para Arisita 💗</title>
+<title>Final para Arisita ❤️</title>
 
 <style>
-  body {
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300&display=swap');
+
+body {
     margin: 0;
-    background: linear-gradient(135deg, #ffa7d8, #ffe1f1);
     height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #ffb6de, #ff7fc3, #ff4da6);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins';
-    overflow: hidden;
-  }
+    animation: aparecer 1.5s ease-out;
+    font-family: Poppins;
+}
 
-  .mensaje {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 5px 25px rgba(255, 100, 180, 0.4);
+@keyframes aparecer {
+    0% { opacity: 0; transform: scale(0.92); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Texto central */
+#mensaje {
     text-align: center;
-    animation: aparecer 1.4s ease;
-  }
+    color: white;
+    font-size: 32px;
+    max-width: 80%;
+    animation: aparecerTexto 3s ease-out;
+}
 
-  @keyframes aparecer {
-    from { opacity: 0; transform: scale(0.7); }
-    to   { opacity: 1; transform: scale(1); }
-  }
+@keyframes aparecerTexto {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 
-  h1 {
-    font-size: 28px;
-    color: #ff4fa3;
-  }
+#mensaje h1 {
+    font-family: Pacifico;
+    font-size: 55px;
+    margin-bottom: 10px;
+    text-shadow: 0px 0px 15px #ff2b88;
+}
 
-  p {
-    font-size: 18px;
-  }
+#mensaje p {
+    font-size: 24px;
+}
+
+/* corazones animados */
+.corazon {
+    position: absolute;
+    font-size: 25px;
+    animation: flotar 6s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-60px) scale(1.4); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* botón volver */
+.volver {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #ff8bcf, #ff5fa2);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+    transition: .3s;
+}
+
+.volver:hover {
+    transform: scale(1.1);
+}
 </style>
-
 </head>
+
 <body>
 
-<div class="mensaje">
-  <h1>Feliz Mes, mi Arisita 💗✨</h1>
-  <p>Eres la niña más dulce, tierna y especial que he conocido.<br>
-  Gracias por hacer mis días más suaves, más rosados, más felices.<br><br>
-  Te amo muchísimo. 💕</p>
+<div id="mensaje">
+    <h1>Gracias por este mes, mi amor ❤️</h1>
+    <p>Este es nuestro final animado, hecho solo para ti.<br>
+    Eres todo lo que siempre soñé.  
+    <br><br>
+    Te amo con toda mi alma. 💖✨
+    </p>
+
+    <button class="volver" onclick="window.location.href='index.html'">
+        ⬅ Volver al inicio
+    </button>
 </div>
+
+<script>
+function crearCorazon() {
+    const c = document.createElement("div");
+    c.textContent = "💖";
+    c.className = "corazon";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.top = Math.random() * 100 + "vh";
+    c.style.fontSize = (20 + Math.random() * 25) + "px";
+
+    document.body.appendChild(c);
+
+    setTimeout(() => c.remove(), 6000);
+}
+
+setInterval(crearCorazon, 500);
+</script>
 
 </body>
 </html>
