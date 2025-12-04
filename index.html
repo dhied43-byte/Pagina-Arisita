@@ -7,66 +7,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
 
-.corazon {
-  position: fixed;
-  bottom: -20px;
-  color: #ff66b3;
-  font-size: 20px;
-  animation: subir 4s linear infinite;
-  opacity: 0.7;
-}
-
-@keyframes subir {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-600px) scale(1.8); opacity: 0; }
-}
-    
-    /* SOBRE ANIMADO */
-.sobre {
-  width: 320px;
-  height: 200px;
-  background: #ff9bcf;
-  position: relative;
-  margin: 40px auto;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(255, 100, 180, 0.4);
-  cursor: pointer;
-  transition: 0.6s;
-  transform-style: preserve-3d;
-}
-
-.sobre .tapa {
-  width: 100%;
-  height: 100%;
-  background: #ff7bbb;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 10px;
-  transform-origin: top;
-  transition: 0.6s;
-}
-
-.sobre.abierto .tapa {
-  transform: rotateX(-180deg);
-}
-
-.carta-contenido {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 0.6s;
-  padding: 20px;
-  color: #333;
-  font-size: 18px;
-  text-align: center;
-}
-
-.sobre.abierto .carta-contenido {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
     body {
         margin: 0;
         overflow: hidden;
@@ -75,7 +15,52 @@
         font-family: 'Poppins', sans-serif;
     }
 
-    /* CARTA */
+    /* SOBRE ANIMADO */
+    .sobre {
+      width: 320px;
+      height: 200px;
+      background: #ff9bcf;
+      position: relative;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(255, 100, 180, 0.4);
+      cursor: pointer;
+      transition: 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .sobre .tapa {
+      width: 100%;
+      height: 100%;
+      background: #ff7bbb;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 10px;
+      transform-origin: top;
+      transition: 0.6s;
+    }
+
+    .sobre.abierto .tapa {
+      transform: rotateX(-180deg);
+    }
+
+    .carta-contenido {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.6s;
+      padding: 20px;
+      color: #333;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .sobre.abierto .carta-contenido {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Carta inicial */
     #carta {
         position: absolute;
         width: 90%;
@@ -90,17 +75,9 @@
         box-shadow: 0px 0px 20px #ff4da6;
         font-size: 20px;
         line-height: 1.5;
-        font-family: 'Poppins';
         z-index: 1000;
     }
 
-   <div id="boton-sorpresa" class="sobre">
-  <div class="tapa"></div>
-  <div class="carta">Abrir carta ✨</div>
-</div>
-
-
-    /* TÍTULO */
     .titulo {
         position: absolute;
         width: 100%;
@@ -115,7 +92,55 @@
         display: none;
     }
 
-    /* Lluvia */
+    /* Botón música */
+    .boton-musica {
+        background: linear-gradient(135deg, #ff8bcf, #ff5fa2);
+        color: white;
+        padding: 15px 28px;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+        transition: 0.3s;
+        position: absolute;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: latido 1.8s infinite;
+    }
+
+    .boton-musica:hover {
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    @keyframes latido {
+        0% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.08); }
+        100% { transform: translateX(-50%) scale(1); }
+    }
+
+    /* Botón sorpresa */
+    .boton-sorpresa-final {
+        margin-top: 20px;
+        padding: 15px 28px;
+        border-radius: 50px;
+        border: none;
+        background: linear-gradient(135deg, #ff6ebe, #ff3f9b);
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(255, 80, 160, 0.5);
+        transition: .3s;
+    }
+
+    .boton-sorpresa-final:hover {
+        transform: scale(1.1);
+    }
+
+    /* lluvia */
     .frase {
         position: absolute;
         color: #ffffff;
@@ -131,260 +156,96 @@
         0% { transform: translateY(-150px); opacity: 1; }
         100% { transform: translateY(110vh); opacity: 0; }
     }
-
-    /* Corazones flotando */
-    .heart {
-        position: absolute;
-        font-size: 20px;
-        color: #ff2b88;
-        opacity: 0.7;
-        animation: flotar 6s infinite ease-in-out;
-        pointer-events: none;
-    }
-
-    @keyframes flotar {
-        0% { transform: translateY(0) translateX(0) scale(1); }
-        50% { transform: translateY(-40px) translateX(20px) scale(1.3); }
-        100% { transform: translateY(0) translateX(0) scale(1); }
-    }
-
-    /* Explosión al tocar */
-    .explosion {
-        position: absolute;
-        font-size: 30px;
-        pointer-events: none;
-        animation: desaparecer 0.8s ease-out forwards;
-    }
-
-    @keyframes desaparecer {
-        0% { opacity: 1; transform: scale(1); }
-        100% { opacity: 0; transform: scale(2); }
-    }
-
 </style>
 </head>
 
-<style>
-.sobre {
-  width: 160px;
-  height: 100px;
-  background: #ff8fb8;
-  margin: auto;
-  position: relative;
-  border-radius: 10px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.sobre:hover {
-  transform: scale(1.07);
-}
-
-.tapa {
-  width: 100%;
-  height: 50%;
-  background: #ffbad3;
-  position: absolute;
-  top: 0;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transition: 0.4s;
-}
-
-.sobre:hover .tapa {
-  transform: translateY(-10px);
-}
-
-.carta {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: white;
-  height: 80%;
-  border-radius: 10px 10px 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #ff5e9e;
-  transition: 0.4s;
-  transform: translateY(35px);
-}
-
-.sobre:hover .carta {
-  transform: translateY(0);
-}
-</style>
-
-    
 <body>
 
+<!-- SOBRE -->
 <div class="sobre" onclick="this.classList.toggle('abierto')">
   <div class="tapa"></div>
   <div class="carta-contenido">
     💗 Para ti, Arisita 💗 <br><br>
-    Desde que llegaste a mi vida, todo es más bonito.
-    Gracias por hacerme tan feliz, por tu cariño y por existir.
-    <br><br>
+    Gracias por iluminar mi vida.  
+    Eres lo más bonito que tengo.  
     Ábreme siempre que me necesites. 💕✨
   </div>
 </div>
-    
-    
+
 <!-- AUDIO -->
-<audio id="musica" autoplay loop muted>
+<audio id="musica" loop>
   <source src="https://raw.githubusercontent.com/dhied43-byte/Pagina-Arisita/main/HUMBE%20-%20Morfina%20-%20HUMBE.mp3" type="audio/mpeg">
 </audio>
 
-<!-- BOTÓN BONITO -->
-<style>
-  .boton-musica {
-    background: linear-gradient(135deg, #ff8bcf, #ff5fa2);
-    color: white;
-    padding: 15px 28px;
-    border: none;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    animation: latido 1.5s infinite;
-  }
-
-  .boton-musica:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.7);
-  }
-
-  @keyframes latido {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
-</style>
-
-<button class="boton-musica" onclick="document.getElementById('musica').muted = false;">
-  💖 🎶 Activar Música 💖
-</button>
-    
+<!-- BOTÓN MÚSICA -->
+<button class="boton-musica" id="btnMusica">🎶 Activar música</button>
 
 <!-- CARTA INICIAL -->
 <div id="carta">
     <h2>Para ti, Arisita ❤️</h2>
     <p>
-        Hola mi amooooor, ari mi vida mi alma, quería desearte feliz primer mes, 
-        Gracias por cada momento, de verdad te agradezco por entrar en mi vida.  
-        Te amo con todo mi corazón, cada día contigo es como un sueño.  
-        Presiona el botón para ver algo uwu 💖✨
+        Hola mi amooooor, ari mi vida mi alma, quería desearte feliz primer mes.  
+        Gracias por entrar en mi vida.  
+        Te amo con todo mi corazón 💖✨  
     </p>
-    <button id="boton-sorpresa">Ver sorpresa</button>
+
+    <button id="boton-sorpresa">Ver sorpresa ✨</button>
 </div>
 
 <div class="titulo" id="titulo">Te amo, Arisita ❤️</div>
 
-<!-- MÚSICA: MORFINA - HUMBE -->
-<div style="display:none;" id="musica">
-    <iframe width="0" height="0"
-        src="https://www.youtube.com/embed/taA7h68DX4I?autoplay=1"
-        title="Morfina - Humbe"
-        allow="autoplay"
-        frameborder="0">
-    </iframe>
-</div>
-
 <script>
-// Botón de inicio
+/* Música */
+const audio = document.getElementById("musica");
+const btnMusica = document.getElementById("btnMusica");
+
+btnMusica.onclick = function() {
+    if (audio.paused || audio.muted) {
+        audio.muted = false;
+        audio.play();
+        btnMusica.textContent = "🔇 Silenciar música";
+    } else {
+        audio.muted = true;
+        audio.pause();
+        btnMusica.textContent = "🎶 Activar música";
+    }
+};
+
+/* Botón sorpresa */
 document.getElementById("boton-sorpresa").onclick = function() {
     document.getElementById("carta").style.display = "none";
     document.getElementById("titulo").style.display = "block";
-    document.getElementById("musica").style.display = "block";
 
-    iniciarAnimaciones();
+    setInterval(lluviaDeAmor, 250);
+
+    // mostrar botón lindo para ir al final
+    const btn = document.createElement("button");
+    btn.className = "boton-sorpresa-final";
+    btn.textContent = "Ir al final ✨";
+    btn.onclick = () => window.location.href = "sorpresa.html";
+    btn.style.position = "absolute";
+    btn.style.top = "70%";
+    btn.style.left = "50%";
+    btn.style.transform = "translateX(-50%)";
+    document.body.appendChild(btn);
 };
 
-// Frases de la lluvia
+/* lluvia */
 function lluviaDeAmor() {
     const frases = [
-        "Te amo Arisita ❤️",
-        "Feliz mes 🎉",
-        "Eres mi vida 💕",
-        "Gracias por existir ✨",
-        "Me haces muy feliz 💗",
-        "Siempre contigo 💞",
-        "Mi corazoncito es tuyo ❤️",
-        "Te pienso todo el día 💘",
-        "Eres mi lugar favorito 🌷",
-        "Cada día te quiero más 🌟",
-        "Tu sonrisa ilumina todo ✨",
-        "Eres perfecta para mí 💞"
+        "Te amo Arisita ❤️","Eres perfecta ✨","Mi vida 💕","Gracias por existir",
+        "Eres mi felicidad 💗","Siempre contigo 💞"
     ];
 
-    const frase = document.createElement("div");
-    frase.className = "frase";
-    frase.textContent = frases[Math.floor(Math.random() * frases.length)];
+    const f = document.createElement("div");
+    f.className = "frase";
+    f.textContent = frases[Math.floor(Math.random() * frases.length)];
+    f.style.left = Math.random() * 100 + "vw";
 
-    frase.style.left = Math.random() * 100 + "vw";
-    frase.style.fontSize = (26 + Math.random() * 14) + "px";
-
-    document.body.appendChild(frase);
-
-    setTimeout(() => frase.remove(), 4000);
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 4000);
 }
-
-// Corazones flotantes
-function corazones() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = Math.random() * 100 + "vh";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
-}
-
-// Explosión de corazones al tocar
-document.addEventListener("click", function(e) {
-    const boom = document.createElement("div");
-    boom.className = "explosion";
-    boom.textContent = "💥💗";
-    boom.style.left = e.clientX + "px";
-    boom.style.top = e.clientY + "px";
-    document.body.appendChild(boom);
-
-    setTimeout(() => boom.remove(), 800);
-});
-
-function iniciarAnimaciones() {
-    setInterval(lluviaDeAmor, 250);
-    setInterval(corazones, 700);
-}
-</script>
-
-<script>
-  function corazones() {
-    let corazon = document.createElement("div");
-    corazon.classList.add("corazon");
-    corazon.innerHTML = "💖";
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.fontSize = (20 + Math.random() * 20) + "px";
-
-    document.body.appendChild(corazon);
-
-    setTimeout(() => {
-      corazon.remove();
-    }, 4000);
-  }
-  setInterval(corazones, 500);
 </script>
 
 </body>
 </html>
-
-
-
