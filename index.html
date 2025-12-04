@@ -119,6 +119,46 @@
 
 <body>
 
+<!-- AUDIO -->
+<audio id="musica" autoplay loop muted>
+  <source src="https://raw.githubusercontent.com/dhied43-byte/Pagina-Arisita/main/HUMBE%20-%20Morfina%20-%20HUMBE.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BOTÓN BONITO -->
+<style>
+  .boton-musica {
+    background: linear-gradient(135deg, #ff8bcf, #ff5fa2);
+    color: white;
+    padding: 15px 28px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    animation: latido 1.5s infinite;
+  }
+
+  .boton-musica:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.7);
+  }
+
+  @keyframes latido {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+</style>
+
+<button class="boton-musica" onclick="document.getElementById('musica').muted = false;">
+  💖 🎶 Activar Música 💖
+</button>
+    
 
 <!-- CARTA INICIAL -->
 <div id="carta">
@@ -216,3 +256,4 @@ function iniciarAnimaciones() {
 
 </body>
 </html>
+
